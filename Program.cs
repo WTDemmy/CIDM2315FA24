@@ -1,29 +1,84 @@
-﻿namespace Homework1;
+﻿namespace HOMEWORK2;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // CODE FOR HOMEWORK 1 
-        // Write out the value for x and y using double due to decimal numbers 
+        // CODE FOR Q1 
 
-        double x = 2.5;
-        double y = 3.3; 
+        Console.WriteLine("Please input your grade: ");
+        string grade = Console.ReadLine();
 
-        // calculating for the x and y 
+        // Using the swtich statement 
 
-        double x2 = 4*x*x; // 4*2.5*2.5 = 25
-        double y2 = 3*y;  // 3*3.3 = 9.9 
+        switch (grade){
+            case "A":
+                Console.WriteLine("GPA Points: 4");
+                break;
+            case "B":
+                Console.WriteLine("GPA Points: 3 ");
+                break;
+            case "C":
+                Console.WriteLine("GPA Points: 2");
+                break;
+            case "D":
+                Console.WriteLine("GPA Points: 1");
+                break;
+            case "F":
+                Console.WriteLine("GPA Points: O");
+                break;
 
-        double z = x2 + y2; 
+            default:
+                Console.WriteLine("Wrong Letter Grade!");
+                break;
 
-        // Using formatted string to print results
-
-        Console.WriteLine($" The value of Z is {z}");
-
-
+        }
 
 
+        // CODE FOR Q2 
+
+        // USER INPUT  NO 
+
+        Console.WriteLine("Please enter the first number:");
+        int num1 = Convert.ToInt16(Console.ReadLine());
+
+        Console.WriteLine("Please enter the second number:");
+        int num2 = Convert.ToInt16(Console.ReadLine());
+
+        Console.WriteLine("Please enter the third number:");
+        int num3 = Convert.ToInt16(Console.ReadLine());
+
+        int smallest = num1;
+        if(num2<smallest){
+            smallest = num2;
+        }
+        if(num3<smallest){
+            smallest = num3;
+        }
+
+        Console.WriteLine($"The smallest is: {smallest}");
+
+
+       // BONUS QUESTION 
+
+       Console.WriteLine("Please enter a year:");
+       int year = Convert.ToInt16(Console.ReadLine());
+
+       //A year is a leap year if;It is divisible by 4.
+       //if it can be exactly divided by 100, then it isn't.
+       // However, if it is divisible by 400 also. 
+
+       if ((year % 4 == 0) && (year % 100 != 0 || year % 400 == 0))
+        {
+            Console.WriteLine($"{year} is a leap year.");
+        }
+        else{
+            Console.WriteLine($"{year} is not a leap year.");
+             }
+
+
+
+    
 
         
     }
