@@ -1,85 +1,107 @@
-﻿namespace HOMEWORK2;
+﻿namespace Homework3;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // CODE FOR Q1 
+        // CODE FOR QUE 1 
 
-        Console.WriteLine("Please input your grade: ");
-        string grade = Console.ReadLine();
+        Console.WriteLine("Input a number:");
+        int N = Convert.ToInt16(Console.ReadLine());
 
-        // Using the swtich statement 
+        bool isPrime = true;
+            for (int i = 2; i < N; i++)
+            if (N <= 1){
+                isPrime = false;
+                    break;
+                }
 
-        switch (grade){
-            case "A":
-                Console.WriteLine("GPA Points: 4");
-                break;
-            case "B":
-                Console.WriteLine("GPA Points: 3 ");
-                break;
-            case "C":
-                Console.WriteLine("GPA Points: 2");
-                break;
-            case "D":
-                Console.WriteLine("GPA Points: 1");
-                break;
-            case "F":
-                Console.WriteLine("GPA Points: O");
-                break;
+            else{
+            
+                for (int y = 2; y < N; y++)
+                {
+                    if (N % y == 0)
+                    {
+                        isPrime = false; 
+                        break; 
 
-            default:
-                Console.WriteLine("Wrong Letter Grade!");
-                break;
+                    }
+                }
+            }
 
-        }
+            if (isPrime)
+            {
+                Console.WriteLine($"{N} is prime number.");
+            }
+            else
+            {
+                Console.WriteLine($"{N} is non-prime.");
 
-
-        // CODE FOR Q2 
-
-        // USER INPUT  NO 
-
-        Console.WriteLine("Please enter the first number:");
-        int num1 = Convert.ToInt16(Console.ReadLine());
-
-        Console.WriteLine("Please enter the second number:");
-        int num2 = Convert.ToInt16(Console.ReadLine());
-
-        Console.WriteLine("Please enter the third number:");
-        int num3 = Convert.ToInt16(Console.ReadLine());
-
-        int smallest = num1;
-        if(num2<smallest){
-            smallest = num2;
-        }
-        if(num3<smallest){
-            smallest = num3;
-        }
-
-        Console.WriteLine($"The smallest is: {smallest}");
+            }
 
 
-       // BONUS QUESTION 
+            // CODE FOR QUE 2
 
-       Console.WriteLine("Please enter a year:");
-       int year = Convert.ToInt16(Console.ReadLine());
+        Console.WriteLine("Input a value to integer D:");
+        int D = Convert.ToInt16(Console.ReadLine());
 
-       //A year is a leap year if;It is divisible by 4.
-       //if it can be exactly divided by 100, then it isn't.
-       // However, if it is divisible by 400 also. 
-
-       if ((year % 4 == 0) && (year % 100 != 0 || year % 400 == 0))
+        for (int row = 0; row < D; row++)
         {
-            Console.WriteLine($"{year} is a leap year.");
+            for (int col = 0; col < D; col++){
+                Console.Write("#");
+            }
+            Console.WriteLine("");
         }
-        else{
-            Console.WriteLine($"{year} is not a leap year.");
-             }
+
+        // CODE FOR QUE 3 
+
+        Console.WriteLine("Input a value to integer C:");
+        int C = Convert.ToInt16(Console.ReadLine());
+
+        for (int row = 0; row <C; row++) {
+            for (int col = 0; col <C; col++){
+                if(row>=col)
+                Console.Write("*");
+            }
+            Console.WriteLine("");
+        }
+
+
+        // BONUS QUE CODE 
+
+         Console.WriteLine("Input a number to integer Z:");
+        int F = Convert.ToInt16(Console.ReadLine());
+
+        for (int Z = 1; Z <= N; Z++)
+        {
+
+            for (int j = 1; j <= N - Z; j++)
+            {
+                Console.Write("1");
+            }
+
+            Console.WriteLine();
+
+        }
 
 
 
-    
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
