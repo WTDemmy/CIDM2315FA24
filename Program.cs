@@ -1,107 +1,109 @@
-﻿namespace Homework3;
+﻿namespace Homework5;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // CODE FOR QUE 1 
+      // Call Q1_method()
+            Console.WriteLine("Q1: Find the largest of two numbers:");
+            int largestTwo = Q1_method();
+            Console.WriteLine($"Largest of the two numbers is: {largestTwo}");
 
-        Console.WriteLine("Input a number:");
-        int N = Convert.ToInt16(Console.ReadLine());
+            // Call Q2_method()
+            Console.WriteLine("Q2: Find the largest of four numbers:");
+            int largestFour = Q2_method();
+            Console.WriteLine($"Largest of the four numbers is: {largestFour}");
 
-        bool isPrime = true;
-            for (int i = 2; i < N; i++)
-            if (N <= 1){
-                isPrime = false;
-                    break;
-                }
+            // Call Q3_method()
+            Console.WriteLine("Q3: Account Creation Process:");
+            createAccount();
+        }
 
-            else{
+        // Q1_method: Find the largest of two integers
+        static int Q1_method()
+        {
+            Console.Write("Enter the first number: ");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the second number: ");
+            int b = int.Parse(Console.ReadLine());
+
+            return (a > b) ? a : b;
+        }
+
+        // Q2_method: Find the largest of four integers 
+        static int Q2_method()
+        {
+            // Get four integers from the user
+            Console.Write("Enter the first number: ");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the second number: ");
+            int b = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the third number: ");
+            int c = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the fourth number: ");
+            int d = int.Parse(Console.ReadLine());
+
             
-                for (int y = 2; y < N; y++)
-                {
-                    if (N % y == 0)
-                    {
-                        isPrime = false; 
-                        break; 
+            int max1 = Q1_compare(a, b);  
+            int max2 = Q1_compare(c, d);  
 
-                    }
-                }
-            }
+            return Q1_compare(max1, max2);
+        }
 
-            if (isPrime)
+        // Method for Q2 that reuses Q1 logic
+        static int Q1_compare(int x, int y)
+        {
+            return (x > y) ? x : y;
+        }
+
+        // Q3_method: Account Creation Process
+        static void createAccount()
+        {
+            Console.Write("Enter a username: ");
+            string username = Console.ReadLine();
+
+            Console.Write("Enter a password: ");
+            string password = Console.ReadLine();
+
+            Console.Write("Confirm your password: ");
+            string confirmPassword = Console.ReadLine();
+
+            Console.Write("Enter your birth year: ");
+            int birthYear = int.Parse(Console.ReadLine());
+
+            // Call checkAge to see if the user is over 18
+            if (checkAge(birthYear))
             {
-                Console.WriteLine($"{N} is prime number.");
+                // Check if passwords match
+                if (password == confirmPassword)
+                {
+                    Console.WriteLine($"Account for {username} is created successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong password");
+                }
             }
             else
             {
-                Console.WriteLine($"{N} is non-prime.");
-
+                Console.WriteLine("Could not create an account");
             }
+        }
 
-
-            // CODE FOR QUE 2
-
-        Console.WriteLine("Input a value to integer D:");
-        int D = Convert.ToInt16(Console.ReadLine());
-
-        for (int row = 0; row < D; row++)
+        static bool checkAge(int birth_year)
         {
-            for (int col = 0; col < D; col++){
-                Console.Write("#");
-            }
-            Console.WriteLine("");
+            int currentYear = DateTime.Now.Year;
+            int age = currentYear - birth_year;
+
+            // Return true if age is 18 or older
+            return age >= 18;
         }
-
-        // CODE FOR QUE 3 
-
-        Console.WriteLine("Input a value to integer C:");
-        int C = Convert.ToInt16(Console.ReadLine());
-
-        for (int row = 0; row <C; row++) {
-            for (int col = 0; col <C; col++){
-                if(row>=col)
-                Console.Write("*");
-            }
-            Console.WriteLine("");
-        }
-
-
-        // BONUS QUE CODE 
-
-         Console.WriteLine("Input a number to integer Z:");
-        int F = Convert.ToInt16(Console.ReadLine());
-
-        for (int Z = 1; Z <= N; Z++)
-        {
-
-            for (int j = 1; j <= N - Z; j++)
-            {
-                Console.Write("1");
-            }
-
-            Console.WriteLine();
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
+      
+       
     }
-}
+
