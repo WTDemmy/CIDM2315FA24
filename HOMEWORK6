@@ -1,0 +1,75 @@
+namespace Homework6;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Professor p1 = new Professor();
+        p1.ProfName = "Alice";
+        p1.ClassTeach = "Java";
+        p1.SetSalary(9000);
+        Console.WriteLine($" Professor {p1.ProfName} teaches {p1.ClassTeach}, and the salary is : {p1.GetSalary()}");
+
+        Professor p2 = new Professor();
+        p2.ProfName = "Bob";
+        p2.ClassTeach = "Math";
+        p2.SetSalary(8000);
+        Console.WriteLine($" Professor {p2.ProfName} teaches {p2.ClassTeach}, and the salary is :{p2.GetSalary()}");
+
+        // Professor Alice = new Professor(profName: "Alice", classTeach: "Java", salary: 9000);
+        // Alice.printInfo();
+
+        Student s1 = new Student();
+        s1.StudentName = "Lisa";
+        s1.ClassEnroll = "Java";
+        s1.SetGrade(90);
+        Console.WriteLine($" Student {s1.StudentName} enrolls in {s1.ClassEnroll}, and the grade is : {s1.GetGrade()}");
+
+        Student s2 = new Student();
+        s2.StudentName = "Tom";
+        s2.ClassEnroll = "Math";
+        s2.SetGrade(80);
+        Console.WriteLine($" Student {s2.StudentName} enrolls in {s2.ClassEnroll}, and the grade is : {s2.GetGrade()}");
+        
+        double salaryDiff = p1.GetSalary() - p2.GetSalary();
+        Console.WriteLine($" Salary differnce between Alice and Bos is : {salaryDiff}");
+
+        double totalGrade = s1.GetGrade() + s2.GetGrade();
+        Console.WriteLine($" Total Grade of Lisa and Tome is : {totalGrade}");
+    
+       
+    }
+
+}
+
+class Professor{
+    public string ProfName; 
+    public string  ClassTeach; 
+    private double salary;
+    
+    public void SetSalary(double salary_amount){
+        salary = salary_amount;
+    }
+    public double GetSalary(){
+        return salary;
+    }
+}
+
+class Student{
+    public string StudentName;
+    public string ClassEnroll;
+    private double grade;
+
+     public void SetGrade(double newGrade){
+        grade = newGrade;
+     }
+     public double GetGrade(){
+        return grade;
+
+     }
+}
+
+
+
+
+
