@@ -1,0 +1,127 @@
+namespace MIDTERMEXAM;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        HumanPlayer human = new HumanPlayer(initial:5);
+        // create a computer player
+        ComputerPlayer computer = new ComputerPlayer();
+        string computer_decision, human_decision;
+
+        while (true)
+        {   
+            human_decision = human.HumanDecision();
+            Console.WriteLine($"Human Decision: {human_decision}");
+
+            computer_decision = computer.ComputerDecision();
+            Console.WriteLine($"Computer Decision: {computer_decision}");
+
+            // computer human_decision and computer decision
+            if(human_decision == "Rock" && computer_decision=="Scissors"){
+                Console.WriteLine("Human Win");
+                human.WinRound();
+                Console.WriteLine($"You have points: {human.GetPoints()}");
+            }
+            else if(human_decision == "Paper" && computer_decision=="Rock"){
+                Console.WriteLine("Human Win");
+                human.WinRound();
+                Console.WriteLine($"You have points: {human.GetPoints()}");
+            }
+            else if( human_decision == "Scissors" && computer_decision == "Paper"){
+                Console.WriteLine("Human Win");
+                human.WinRound();
+                Console.WriteLine($"You have points: {human.GetPoints()}");
+            }
+            else if( human_decision == computer_decision ){
+                Console.WriteLine(" You have a tie");
+            }
+            else{
+                // computer wins
+                Console.WriteLine("Computer Win");
+                human.LoseRound();
+                Console.WriteLine($"You have points: {human.GetPoints()}");
+            }
+
+
+            if( human.GetPoints() <= 0){
+                Console.WriteLine($" You do not have enough points: {human.GetPoints()}");
+                Console.WriteLine(" Game Over. ");
+                break;
+            }
+            // ask user to continue or not
+            if(human.GetPoints()>0){
+                Console.WriteLine("Play again? Input y to continue or any other word to end the game");
+                string next_round = Console.ReadLine();
+                if(next_round == "y"){
+                    continue;
+                }
+                else{ //next_round ==n
+                    Console.WriteLine("Game Over. Thanks for playing.");
+                    break;
+                }
+            }   
+        }  
+    }
+}
+
+class HumanPlayer{
+    private int points; // the points that the human player has
+    public HumanPlayer(int initial){
+        points = initial;
+    } // constructor used to set human player’s initial points
+    public int GetPoints(){
+        return points;
+    } // return the points of human player
+    public void WinRound(){
+        points += 5;
+    } // human player increase 5 points
+    public void LoseRound(){
+        points -= 5;
+    }// human player decrease 5 points
+    public string HumanDecision(){
+        
+        string humanShape;
+        // Using while statement for Human Input Validation
+
+        while (true)
+        {
+            Console.WriteLine("Please input  a shape from Rock, Paper, or Scissors");
+            humanShape = Console.ReadLine();
+            
+           // Check if Input is Valid
+            if(humanShape == "Rock" || humanShape == "Paper" || humanShape == "Scissors"){
+                return humanShape;
+            }
+            else{
+                Console.WriteLine("Invalid input. Please try again.");
+                continue;
+            }
+        }
+    }
+}
+
+class ComputerPlayer{
+    public string ComputerDecision(){
+        Random rnd = new Random();
+        int rnd_num = rnd.Next(0,3);
+        string computerShape;
+
+        switch (rnd_num)
+        {
+            case 0:
+                computerShape = "Rock";
+                break;
+            case 1:
+                computerShape = "Paper";
+                break;
+            case 2:
+                computerShape = "Scissors";
+                break;
+            default:
+                computerShape = "Invalid"; 
+                break;
+        }
+        return computerShape; 
+    }
+}
